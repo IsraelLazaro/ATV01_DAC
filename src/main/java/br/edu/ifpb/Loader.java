@@ -1,4 +1,4 @@
-package br.edu.ifpb.exemplosjpa.loader;
+package br.edu.ifpb;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

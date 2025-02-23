@@ -1,4 +1,4 @@
-package br.edu.ifpb.exemplosjpa;
+package br.edu.ifpb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

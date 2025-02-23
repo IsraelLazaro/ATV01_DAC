@@ -1,11 +1,11 @@
 package br.edu.ifpb.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-
+import java.time.LocalTime;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @NoArgsConstructor
 @Data
@@ -30,13 +30,21 @@ public class Evento {
 
     @Column(nullable = false)
     private LocalDate dataInicio;
-
+    
     @Column(nullable = false)
-    private LocalDate dataFim;
+    private LocalTime horario;
 
-    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL)
+    @Column(nullable = true)  
+    private LocalDate dataFim;
+    
+    @Column(nullable = false)
+    private String categoria; 
+
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference("evento-ingressos") 
     private List<Ingresso> ingressos = new ArrayList<>();
 
-    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference("evento-compras") 
     private List<Compra> compras = new ArrayList<>();
 }
